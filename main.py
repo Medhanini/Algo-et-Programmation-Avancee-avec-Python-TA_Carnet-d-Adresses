@@ -57,8 +57,11 @@ def modifier_contact(carnet):
         print("Téléphone invalide, modification du téléphone annulée.")
         telephone = None
 
-    carnet.modifier_contact(nom, email or None, telephone or None)
-    print(f"Contact '{nom}' mis à jour.")
+    try:
+        carnet.modifier_contact(nom, email or None, telephone or None)
+        print(f"Contact '{nom}' mis à jour.")
+    except ValueError as e:
+        print(f"Erreur : {e}")
 
 
 def rechercher_contact(carnet):
