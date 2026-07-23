@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #2c3e50;
+}
+
+.badge {
+    display: inline-block;
+    background: #eaf0f6;
+    color: #2c3e50;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85em;
+}
+
+header h1 a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bouton {
+    display: inline-block;
+    background: #2c3e50;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+.barre-recherche {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.barre-recherche input[type="text"] {
+    flex: 1;
+    padding: 6px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.actions form {
+    margin: 0;
+}
+
+.lien-danger {
+    background: none;
+    border: none;
+    color: #c0392b;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    text-decoration: underline;
+}
+
+.formulaire-contact textarea {
+    padding: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.formulaire-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+}
+
+.formulaire-contact input {
+    padding: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.actions-formulaire {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+ul.messages {
+    list-style: none;
+    padding: 0;
+}
+
+ul.messages li {
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+ul.messages li.succes {
+    background: #d4edda;
+    color: #155724;
+}
+
+ul.messages li.erreur {
+    background: #f8d7da;
+    color: #721c24;
+}

@@ -84,11 +84,9 @@ class AddressBook:
 
     def rechercher_par_email(self, email):
         email = email.strip().lower()
-
         for contact in self._lire_tout():
             if contact.email.strip().lower() == email:
                 return contact
-
         return None
 
     def rechercher_par_telephone(self, telephone):

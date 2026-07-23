@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block titre %}{{ titre }}{% endblock %}
+
+{% block contenu %}
+    <h2>{{ titre }}</h2>
+
+    <form method="post" class="formulaire-contact">
+        <label>
+            Nom
+            <input type="text" name="nom" value="{{ valeurs.get('nom', '') }}" {% if contact %}readonly{% endif %} required>
+        </label>
+
+        <label>
+            Catégorie
+            <select name="categorie" required>
+                {% for cat in categories %}
+                    <option value="{{ cat }}" {% if cat == valeurs.get('categorie') %}selected{% endif %}>{{ cat }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>
+            Email
+            <input type="email" name="email" value="{{ valeurs.get('email', '') }}" required>
+        </label>
+
+        <label>
+            Téléphone
+            <input type="text" name="telephone" placeholder="0612345678" value="{{ valeurs.get('telephone', '') }}" required>
+        </label>
+
+        <label>
+            Entreprise
+            <input type="text" name="entreprise" value="{{ valeurs.get('entreprise', '') }}">
+        </label>
+
+        <label>
+            Fonction
+            <input type="text" name="fonction" value="{{ valeurs.get('fonction', '') }}">
+        </label>
+
+        <label>
+            Adresse
+            <textarea name="adresse" rows="3">{{ valeurs.get('adresse', '') }}</textarea>
+        </label>
+
+        <div class="actions-formulaire">
+            <button type="submit">Enregistrer</button>
+            <a href="{{ url_for('index') }}">Annuler</a>
+        </div>
+    </form>
+{% endblock %}
