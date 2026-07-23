@@ -3,6 +3,7 @@ from tkinter import messagebox, simpledialog
 
 from address_book import AddressBook
 from contact import Contact
+from login import FenetreConnexion
 
 
 class CarnetAdressesApp:
@@ -104,10 +105,21 @@ class CarnetAdressesApp:
             messagebox.showerror("Erreur", f"Aucun contact nommé '{nom}' n'a été trouvé.")
 
 
-def main():
+def ouvrir_carnet_adresses():
     racine = tk.Tk()
     CarnetAdressesApp(racine)
     racine.mainloop()
+
+
+def main():
+    racine_connexion = tk.Tk()
+
+    def apres_connexion():
+        racine_connexion.destroy()
+        ouvrir_carnet_adresses()
+
+    FenetreConnexion(racine_connexion, apres_connexion)
+    racine_connexion.mainloop()
 
 
 if __name__ == "__main__":
