@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block titre %}{{ titre }}{% endblock %}
+
+{% block contenu %}
+    <h2>{{ titre }}</h2>
+
+    <form method="post" class="formulaire-contact">
+        <label>
+            Nom
+            <input type="text" name="nom" value="{{ valeurs.get('nom', '') }}" {% if contact %}readonly{% endif %} required>
+        </label>
+
+        <label>
+            Email
+            <input type="email" name="email" value="{{ valeurs.get('email', '') }}" required>
+        </label>
+
+        <label>
+            Téléphone
+            <input type="text" name="telephone" placeholder="0612345678" value="{{ valeurs.get('telephone', '') }}" required>
+        </label>
+
+        <div class="actions-formulaire">
+            <button type="submit">Enregistrer</button>
+            <a href="{{ url_for('index') }}">Annuler</a>
+        </div>
+    </form>
+{% endblock %}

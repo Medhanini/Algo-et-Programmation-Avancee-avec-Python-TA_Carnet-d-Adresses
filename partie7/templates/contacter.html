@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titre %}Contacter {{ contact.nom }}{% endblock %}
+
+{% block contenu %}
+    <h2>Contacter {{ contact.nom }}</h2>
+    <p>Email : {{ contact.email }} &nbsp;|&nbsp; Téléphone : {{ contact.telephone }}</p>
+
+    <form method="get" class="barre-recherche">
+        <label for="modele">Modèle de message :</label>
+        <select id="modele" name="modele" onchange="this.form.submit()">
+            {% for cle in modeles %}
+                <option value="{{ cle }}" {% if cle == modele_choisi %}selected{% endif %}>
+                    {{ "Confirmation de rendez-vous" if cle == "rendezvous" else "Demande/résultats de laboratoire" }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <form method="post" class="formulaire-contact">
+        <input type="hidden" name="modele" value="{{ modele_choisi }}">
+
+        <label>
+            Sujet (email)
+            <input type="text" name="sujet" value="{{ sujet }}">
+        </label>
+
+        <label>
+            Message
+            <textarea name="corps" rows="8">{{ corps }}</textarea>
+        </label>
+
+        <div class="actions-formulaire">
+            <button type="submit" name="canal" value="email">Envoyer par email</button>
+            <button type="submit" name="canal" value="whatsapp">Envoyer par WhatsApp</button>
+            <a href="{{ url_for('index') }}">Annuler</a>
+        </div>
+    </form>
+{% endblock %}

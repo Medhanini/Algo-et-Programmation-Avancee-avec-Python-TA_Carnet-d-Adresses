@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block titre %}Contacts{% endblock %}
+
+{% block contenu %}
+    <form action="{{ url_for('index') }}" method="get" class="barre-recherche">
+        <input type="text" name="q" placeholder="Rechercher (nom, email, téléphone)..." value="{{ terme }}">
+        <button type="submit">Rechercher</button>
+        {% if terme %}
+            <a href="{{ url_for('index') }}">Réinitialiser</a>
+        {% endif %}
+    </form>
+
+    <a class="bouton" href="{{ url_for('ajouter_contact') }}">+ Ajouter un contact</a>
+
+    <p>{{ contacts|length }} contact(s)</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.nom }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.telephone }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('modifier_contact', nom=contact.nom) }}">Modifier</a>
+                        <a href="{{ url_for('contacter_contact', nom=contact.nom) }}">Contacter</a>
+                        <form action="{{ url_for('supprimer_contact', nom=contact.nom) }}" method="post"
+                              onsubmit="return confirm('Supprimer le contact {{ contact.nom }} ?');">
+                            <button type="submit" class="lien-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun contact trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
